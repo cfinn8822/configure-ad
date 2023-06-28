@@ -40,14 +40,14 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - In the Search Box at the top header, type and select "Virtual machines".
  - Click "Create", then select "Azure virtual machine".
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Y4hI9Fw.jpg.png" height="50%" width="70%" alt="Disk Sanitization Steps"/>
 
  - Name your Virtual Machine anyway you want (for this example i am using DC-1)
-   - Resource Group is automatically given a name when naming the Virtual Machine, but you can change it if you wish(for this example i am using (AD_lab)
+   - Resource Group is automatically given a name when naming the Virtual Machine, but you can change it if you wish for this example i am using (ADlab)
  - Change the Region that best suites your location (for this example use (US) West US 3).
  - Change the Image to a Windows Server, as this will become our DC-1 (for this example use Windows Server 2022 Datacenter)
  - Make sure the Size is adequate enough to run this server (for this example use Standard_E2s_v3 - 2 vcpus, 16 GiB memory).
- - Create a username and password of your choice (for this example use labuser)
+ - Create a username and password of your choice for this example use (labuser).
  - Skip everything else and click "Review + create".
    - IF there is a Licensing Checkbox at the end, make sure that is CHECKED!
  - If Validation passed, click "Create".
@@ -59,7 +59,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 2)Create a Client VM (Client-1)
 
  - Follow the same steps as before for creating a virtual machine.
-   - However, the Resource Group should be assigned as the same for the Domain Controller VM (for this example use AD_lab).
+   - However, the Resource Group should be assigned as the same for the Domain Controller VM (for this example use ADlab).
    - Use a different virtual machine name (for this example use Client-1).
    - Change the Administrator Account credentials to differentiate the two VMs (for this example use chris).
  - Change the Image to a Windows OS (for this example use Windows 10 Pro, version 22H2 - x64 Gen2).
@@ -132,7 +132,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
  - On the DC-1 VM, press the Windows Key/Button, then type and select "Windows Defender Firewall with Advanced Security".
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/fbd49FX.png.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
  - Click "Inbound Rules" (on the left sidebar).
  - Find the two names "Core Networking Diagnostics - ICMP Echo Request (ICMPv4-In)" (easier to sort by Protocol).
@@ -149,7 +149,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - With that copied, go into the Client-1 VM.
  - Press the Windows key (or Start Button), the type and select CMD or "Command Prompt" (you can run as Admin if desired).
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/rdxkUFs.jpg.png" height="10%" width="50%" alt="Disk Sanitization Steps"/>
 
  - Inside the Command Prompt, type "ping -t {DC-1 Private IP Address}" (for this example use IP address 10.0.0.)
    - This will infinitely sent data packets for response to the DC-1 VM.
@@ -163,7 +163,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - Login to DC-1 VM and open "Server Manager" (if not open already).
  - Click on "Add Roles and Features" (2nd) on the front page.
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/h9ODygs.jpg.png" height="40%" width="50%" alt="Disk Sanitization Steps"/>
 
  - Keep clicking "Next" until you reach Server Roles tab.
  - Checkmark "Active Directory Domain Services", and prompt will appear:
@@ -192,7 +192,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DjdAibt.jpg.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
  - Once completed, log back into the DC-1 VM
    - However, you should not be able use the same username as before, now it will require the domain name.
@@ -206,7 +206,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - On the DC-1 VM, in Server Manager, click on "Tools" on the top-right header.
  - Click "Active Directory Users and Computers"
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/1wo2D3b.jpg.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
  - For this demo, we are going to create 2 new folders within mydomain.com (also known as "Organizational Unit")
    - Right-click "mydomain.com" on the left sidebar.
@@ -230,12 +230,12 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - Checkmark "Password never expires".
  - Click "Next" until the account is created.
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/wMRlKWC.jpg.png" height="40%" width="80%" alt="Disk Sanitization Steps"/>
 
  - The user account is only inside a folder named _ADMINS, but that doesn't mean it has the privileges as one, so:
    - Right-click on the new account, then click "Properties".
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/X50OUJt.jpg.png" height="30%" width="50%" alt="Disk Sanitization Steps"/>
 
  - Click on the "Member Of" tab, then click the "Add" button.
  - Type in the word "domain", then click "Check Names", allowing to view all already built-in groups.
@@ -268,7 +268,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
  - On Client-1 VM, Right-click the Windows Button and select "System".
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/C6RAJoo.jpg.png" height="30%" width="40%" alt="Disk Sanitization Steps"/>
 
  - Click on "Rename this PC (advanced)"
 
