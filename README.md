@@ -10,7 +10,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>Environments and Technologies Used</h2>
 
-- Microsoft Azure (Virtual Machines/Compute)
+- Microsoft Azure (Virtual Machines/Computer)
 - Remote Desktop
 - Active Directory Domain Services
 - PowerShell
@@ -23,11 +23,11 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <h2>High-Level Deployment and Configuration Steps</h2>
 
 - Create 2 Virtual machines in Azure:
-  - Domain Controller (DC-1) (Windows Server 2022)
+  - Domain Controller (DC-01) (Windows Server 2022)
   - Client-1 (Windows 10)
-- Ensure Connectivity between the Client-1 and Domain Controller (DC-1)
-  - Enable ICMPv4 (ECHO) in on the local windows Firewall (DC-1)
-- Install Active Directory Domain Services from (DC-1)
+- Ensure Connectivity between the Client-1 and Domain Controller (DC-01)
+  - Enable ICMPv4 (ECHO) in on the local windows Firewall (DC-01)
+- Install Active Directory Domain Services from (DC-01)
 - Create an Admin and Normal User Account in Active Directory
 - Join Client-1 to your Domain
 - Setup Remote Desktop for non-admin users on Client-1
@@ -35,41 +35,39 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>Deployment and Configuration Steps</h2>
 
-1)Create a Domain Controller (DC-1)
+1)Create a Domain Controller (DC-01)
 
  - In the Search Box at the top header, type and select "Virtual machines".
  - Click "Create", then select "Azure virtual machine".
 
 <img src="https://i.imgur.com/Y4hI9Fw.jpg.png" height="50%" width="70%" alt="Disk Sanitization Steps"/>
 
- - Name your Virtual Machine anyway you want (for this example i am using DC-1)
-   - Resource Group is automatically given a name when naming the Virtual Machine, but you can change it if you wish for this example i am using (ADlab)
+ - Name your Virtual Machine anyway you want (for this example i am using DC-01)
+   - Resource Group is automatically given a name when naming the Virtual Machine, but you can change it if you wish for this example i am using (AD_lab)
  - Change the Region that best suites your location (for this example use (US) West US 3).
- - Change the Image to a Windows Server, as this will become our DC-1 (for this example use Windows Server 2022 Datacenter)
- - Make sure the Size is adequate enough to run this server (for this example use Standard_E2s_v3 - 2 vcpus, 16 GiB memory).
+ - Change the Image to a Windows Server, as this will become our DC-01 for this example use (Windows Server 2022 Datacenter)
+ - Make sure the Size is adequate enough to run this server for this example use (Standard_E2s_v3 - 2 vcpus, 16 GiB memory).
  - Create a username and password of your choice for this example use (labuser).
  - Skip everything else and click "Review + create".
    - IF there is a Licensing Checkbox at the end, make sure that is CHECKED!
  - If Validation passed, click "Create".
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
 2)Create a Client VM (Client-1)
 
  - Follow the same steps as before for creating a virtual machine.
-   - However, the Resource Group should be assigned as the same for the Domain Controller VM (for this example use ADlab).
+   - However, the Resource Group should be assigned as the same for the Domain Controller VM (for this example use AD_lab).
    - Use a different virtual machine name (for this example use Client-1).
    - Change the Administrator Account credentials to differentiate the two VMs (for this example use chris).
- - Change the Image to a Windows OS (for this example use Windows 10 Pro, version 22H2 - x64 Gen2).
+ - Change the Image to a Windows OS for this example use (Windows 10 Pro, version 22H2 - x64 Gen2).
  - Once done, click "Next" until you reach "Networking" (OR you can simply click the Networking tab at the top).
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
- - Make sure that the "Virtual network" is set to the Vnet that the Domain Controller VM automatically created (for this example use DC-1-vnet).
+ - Make sure that the "Virtual network" is set to the Vnet that the Domain Controller VM automatically created for this example use (DC-01-vnet).
  - Select the dropdown box for Subnet and confirm the default selection.
    - Sometimes you will have to manually set the Subnet, otherwise it will not let you proceed.
  - Skip everything else and click "Review + create".
@@ -80,8 +78,8 @@ This tutorial outlines the implementation of on-premises Active Directory within
 3)Assign Domain Controller's Private IP address to "STATIC".
 
  - Later in this demo, we'll need users to login using a domain name instead of their standard username, so we'll have to make sure the Domain Controller's NIC Private IP address doesn't get changed in the future:
- - From Azure Portal, go to DC-1 VM Overview page.
- - Click on "Networking", then click on the "Network Interface" (for this example it is dc-).
+ - From Azure Portal, go to DC-01 VM Overview page.
+ - Click on "Networking", then click on the "Network Interface" for this example it is (dc-).
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
@@ -114,11 +112,11 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
- - Minimize the Virtual Machine(Client-1)and login to the other VM (DC-1).
+ - Minimize the Virtual Machine(Client-1)and login to the other VM (DC-01).
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
- - Return to Azure Portal,go to vm overview page and get (DC-1) public ip address.
+ - Return to Azure Portal,go to vm overview page and get (DC-01) public ip address.
  - Press the Windows Key/Button, type and select "Remote Desktop Connection".
    - for a 2nd (RDC)
  - Input the virtual machine's Public IP Address and click Connect.
@@ -141,7 +139,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
- - Once enabled, return to the DC-1 VM Overview page in Azure.
+ - Once enabled, return to the DC-01 VM Overview page in Azure.
  - COPY the Private IP Address.
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
@@ -151,14 +149,14 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <img src="https://i.imgur.com/rdxkUFs.jpg.png" height="10%" width="50%" alt="Disk Sanitization Steps"/>
 
- - Inside the Command Prompt, type "ping -t {DC-1 Private IP Address}" (for this example use IP address 10.0.0.)
-   - This will infinitely sent data packets for response to the DC-1 VM.
+ - Inside the Command Prompt, type "ping -t {DC-1 Private IP Address}" (for this example use IP address 10.0.0.4)
+   - This will infinitely sent data packets for response to the DC-01 VM.
  - This confirms if the Client-1 VM can see the DC-1 VM successfully, otherwise you'll recieve a "Request Timed Out" message.
  - You can either press "Ctrl+C" to stop the ping process, OR you can simply close the Command Prompt.
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
-5)Install Active Directory Domain Services within DC-1 VM
+5)Install Active Directory Domain Services within DC-01 VM
 
  - Login to DC-1 VM and open "Server Manager" (if not open already).
  - Click on "Add Roles and Features" (2nd) on the front page.
@@ -179,36 +177,34 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
  - In the Deployment Configuration tab, select "Add a new forest".
- - Type any domain name you wish to use (for this example use "mydomain.com")
+ - Type any domain name you wish to use for this example use ("mydomain.com")
  - Click "Next".
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
  - Create a password of your choice.
  - Keep clicking "Next" until the "Install" option is enabled, then click "Install".
-   - Installing will result in restarting the DC-1 VM.
+   - Installing will result in restarting the DC-01 VM.
   
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-
 <img src="https://i.imgur.com/DjdAibt.jpg.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
- - Once completed, log back into the DC-1 VM
+ - Once completed, log back into the DC-01 VM
    - However, you should not be able use the same username as before, now it will require the domain name.
  - Select "More Choices", then click "Use a different account".
- - Change the username to add the domain name at the beginning of the original username (for this example use "mydomain.com\labuser").
+ - Change the username to add the domain name at the beginning of the original username for this example use ("mydomain.com\labuser").
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
 6)Create an Admin Account in Active Directory
 
- - On the DC-1 VM, in Server Manager, click on "Tools" on the top-right header.
+ - On the DC-01 VM, in Server Manager, click on "Tools" on the top-right header.
  - Click "Active Directory Users and Computers"
 
 <img src="https://i.imgur.com/1wo2D3b.jpg.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
- - For this demo, we are going to create 2 new folders within mydomain.com (also known as "Organizational Unit")
+ - For this demo, we are going to create 2 new folders within mydomain.com also known as ("Organizational Unit")
    - Right-click "mydomain.com" on the left sidebar.
    - Hover "New", then click "Organizational Unit".
   
@@ -224,7 +220,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
- - Create a first and last name, as well as a login name for this Admin user, then click "Next" (for this example use Jane Doe / jane_admin)
+ - Create a first and last name, as well as a login name for this Admin user, then click "Next" for this example use (Jane Doe / jane_admin)
  - Create a password of your choice for that account.
  - Uncheck "User must change password at next login".
  - Checkmark "Password never expires".
@@ -244,7 +240,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
- - Once completed, logoff of DC-1 VM and login to the newly created admin account with the domain name (mydomain.com\jane_admin).
+ - Once completed, logoff of DC-01 VM and login to the newly created admin account with the domain name (mydomain.com\jane_admin).
    - We use jane_admin account from now on instead of "labuser".
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
@@ -252,7 +248,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 7)Join Client-1 vm to the domain (mydomain.com)
 
  - From Azure Portal, go to Client-1 VM Overview page.
- - Click on "Networking", then click on the "Network Interface" (for this  example use client-).
+ - Click on "Networking", then click on the "Network Interface for this example use (client-).
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
@@ -288,14 +284,12 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - Click "OK" again and you will be required to restart.
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
  - Use Remote Desktop (RDP) to login to the Client-1 VM.
  - Click "Use a different account", for now we will login using the jane_admin account.
-   - The admin account is already logged onto the DC-1 VM, but this time we are logging in through the Client-1 VM.
+   - The admin account is already logged onto the DC-01 VM, but this time we are logging in through the Client-1 VM.
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
@@ -318,7 +312,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 9)Create additional users and attempt to log into Client-1 with one of them:
 
- - Login to DC-1 as your admin account, if not already (use "jane_admin").
+ - Login to DC-01 as your admin account, if not already use ("jane_admin").
  - Press the Windows Key/Button and type "PowerShell".
    - Right-click on PowerShell_ISE and select Run as administrator.
 
@@ -346,7 +340,6 @@ This tutorial outlines the implementation of on-premises Active Directory within
    - Remember to start with the domain name before the username.
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
  - Whether it's failing at logging into accounts, resetting a password, or protecting against dangerous actors, there will always be a need for assistance to access one's account.
