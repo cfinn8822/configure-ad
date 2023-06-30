@@ -52,20 +52,22 @@ This tutorial outlines the implementation of on-premises Active Directory within
    - IF there is a Licensing Checkbox at the end, make sure that is CHECKED!
  - If Validation passed, click "Create".
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/KKlMj5G.png.png" height="40%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/bjlVvN8.png.png" height="40%" width="80%" alt="Disk Sanitization Steps"/>
 
 2)Create a Client VM (Client-1)
 
  - Follow the same steps as before for creating a virtual machine.
-   - However, the Resource Group should be assigned as the same for the Domain Controller VM (for this example use AD_lab).
-   - Use a different virtual machine name (for this example use Client-1).
-   - Change the Administrator Account credentials to differentiate the two VMs (for this example use chris).
+   - However, the Resource Group should be assigned as the same for the Domain Controller VM for this example use (AD_lab).
+   - Use a different virtual machine name for this example use (Client-1).
+   - Change the Administrator Account credentials to differentiate the two VMs for this example use (chris).
  - Change the Image to a Windows OS for this example use (Windows 10 Pro, version 22H2 - x64 Gen2).
  - Once done, click "Next" until you reach "Networking" (OR you can simply click the Networking tab at the top).
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/WYrWfLc.png.png" height="40%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/SHg2C9g.png.png" height="40%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/d4QkJjY.png.png" height="40%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/JuSo4J2.png.png" height="40%" width="80%" alt="Disk Sanitization Steps"/>
 
  - Make sure that the "Virtual network" is set to the Vnet that the Domain Controller VM automatically created for this example use (DC-01-vnet).
  - Select the dropdown box for Subnet and confirm the default selection.
@@ -73,34 +75,34 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - Skip everything else and click "Review + create".
  - If Validation passed, click "Create".
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/pNXu8CR.png.png" height="40%" width="80%" alt="Disk Sanitization Steps"/>
 
 3)Assign Domain Controller's Private IP address to "STATIC".
 
  - Later in this demo, we'll need users to login using a domain name instead of their standard username, so we'll have to make sure the Domain Controller's NIC Private IP address doesn't get changed in the future:
  - From Azure Portal, go to DC-01 VM Overview page.
- - Click on "Networking", then click on the "Network Interface" for this example it is (dc-).
+ - Click on "Networking", then click on the "Network Interface" for this example it is (dc-01126).
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/1fNwhXn.png.png" height="40%" width="80%" alt="Disk Sanitization Steps"/>
 
  - Click on "IP configurations" on the left.
  - You can see that the Private IP address is "Dynamic".
    - Click on "ipconfig1".
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/sO2mvTn.png.png" height="50%" width="80%" alt="Disk Sanitization Steps"/>
 
  - Change the Assignment at the bottom to "Static".
  - Click "Save".
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/MnqaVCW.png.png" height="30%" width="80%" alt="Disk Sanitization Steps"/>
 
 4)Ensure Connectivity between the Client and Domain Controller
 
- - Login to both the DC-1 and Client-1 VMs with Remote Desktop
+ - Login to both the DC-01 and Client-1 VMs with Remote Desktop
   - In Azure Portal, go to any VM Overview page (for this example start with Client-1 VM).
   - COPY its public IP address (located on the right side).
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/tInyj6t.png.png" height="50%" width="80%" alt="Disk Sanitization Steps"/>
 
  - Press the Windows Key/Button, type and select "Remote Desktop Connection".
  - Input the virtual machine's Public IP Address and click Connect.
@@ -239,7 +241,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - Select "Domain Admins", then "OK".
  - Click "Apply", then "OK" again.
 
-<img src="https://i.imgur.com/aHRziYK.jpg.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/aHRziYK.jpg.png" height="40%" width="80%" alt="Disk Sanitization Steps"/>
 
  - Once completed, logoff of DC-01 VM and login to the newly created admin account with the domain name (mydomain.com\jane_admin).
    - We use jane_admin account from now on instead of "labuser".
@@ -261,6 +263,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
    - You can also press the Restart button in the Client-1 VM Overview page.
    - Login again to Client-1 VM.
 
+<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
  - On Client-1 VM, Right-click the Windows Button and select "System".
@@ -284,9 +287,9 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - If done correctly, you should see a welcoming window appear to joining the domain.
  - Click "OK" again and you will be required to restart.
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/p8cxB3S.jpg.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/VwJBOUZ.jpg.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/n9CttVe.jpg.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
  - Use Remote Desktop (RDP) to login to the Client-1 VM.
  - Click "Use a different account", for now we will login using the jane_admin account.
@@ -298,18 +301,18 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
  - Right-click the Windows Button and select "System", then click "Remote Desktop".
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/5sxnoRC.jpg.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
  - At the bottom, click "Select users that can remotely access this PC".
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/14bZAzW.jpg.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
  - Next, click "Add".
  - Type in "Domain_Users" into the Object names box.
  - Once assigned, click "OK" and "OK" again.
  - This now makes Client-1 as a normal, non-administrative user.
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/ssDuJDL.jpg.png" height="50%" width="100%" alt="Disk Sanitization Steps"/>
 
 9)Create additional users and attempt to log into Client-1 with one of them:
 
@@ -317,7 +320,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - Press the Windows Key/Button and type "PowerShell".
    - Right-click on PowerShell_ISE and select Run as administrator.
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/R9kVzya.jpg.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 
  - At the top menu, click on "New Script"
  - Using a premade script, copy and paste the code into the box.
@@ -325,9 +328,8 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - When ready, at the top menu, click the "Run" button (green play button icon).
    - This script will create 1000's of  accounts using the password "Password1" (variables set at beginning of code). These accounts will be placed in its set path: _EMPLOYEES, listed near the end of the code.
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/ZW2qBUN.jpg.png" height="50%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/3QgSysv.jpg.png" height="50%" width="80%" alt="Disk Sanitization Steps"/>
 
  - Open "Active Directory Users and Computers" (from the Server Manager or Windows search)
  - Reveal mydomain.com, then reveal _EMPLOYEES folder.
