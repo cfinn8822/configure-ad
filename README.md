@@ -153,7 +153,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
  - Inside the Command Prompt, type "ping -t {DC-01 Private IP Address}" (for this example use IP address 10.0.0.4)
    - This will infinitely sent data packets for response to the DC-01 VM.
- - This confirms if the Client-1 VM can see the DC-1 VM successfully, otherwise you'll recieve a "Request Timed Out" message.
+ - This confirms if the Client-1 VM can see the DC-01 VM successfully, otherwise you'll recieve a "Request Timed Out" message.
  - You can either press "Ctrl+C" to stop the ping process, OR you can simply close the Command Prompt.
 
 <img src="https://i.imgur.com/6WssO45.png.png" height="60%" width="60%" alt="Disk Sanitization Steps"/>
@@ -320,7 +320,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - Press the Windows Key/Button and type "PowerShell".
    - Right-click on PowerShell_ISE and select Run as administrator.
 
-<img src="https://i.imgur.com/R9kVzya.jpg.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/R9kVzya.jpg.png" height="40%" width="60%" alt="Disk Sanitization Steps"/>
 
  - At the top menu, click on "New Script"
  - Using a premade script, copy and paste the code into the box.
@@ -335,23 +335,23 @@ This tutorial outlines the implementation of on-premises Active Directory within
  - Reveal mydomain.com, then reveal _EMPLOYEES folder.
    - You should see all of the randomly created user accounts in this folder.
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/12Js1nA.jpg.png" height="40%" width="70%" alt="Disk Sanitization Steps"/>
 
  - Next, we're going to attempt to login one of those random users to Client-1 VM.
- - Copy any randomly created user(for this example i used   ).
+ - Copy any randomly created user for this example i used (did.cuta).
  - Logoff of any account currently on Client-1 VM, and attempt to login with the random user.
    - Remember to start with the domain name before the username.
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/5kjRZYq.jpg.png" height="40%" width="60%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/AcOU7jw.jpg.png" height="40%" width="80%" alt="Disk Sanitization Steps"/>
 
  - Whether it's failing at logging into accounts, resetting a password, or protecting against dangerous actors, there will always be a need for assistance to access one's account.
  - Open "Active Directory Users and Computers"
  - Reveal mydomain.com, then reveal _EMPLOYEES folder.
- - Double-click the user's account (this example uses ) to access the properties.
+ - Double-click the user's account this example uses (did.cuta) to access the properties.
    - With this you can unlock accounts, reset passwords, and more!
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/1nbDswY.jpg.png" height="40%" width="60%" alt="Disk Sanitization Steps"/>
 
 !!!Complete!!!
 
